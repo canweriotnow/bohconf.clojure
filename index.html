@@ -1,492 +1,511 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>reveal.js by hakimel</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>reveal.js</h1>
-        <p>The HTML Presentation Framework</p>
-
-        <p class="view"><a href="https://github.com/hakimel/reveal.js">View the Project on GitHub <small>hakimel/reveal.js</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/hakimel/reveal.js/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/hakimel/reveal.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/hakimel/reveal.js">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>reveal.js <a href="https://travis-ci.org/hakimel/reveal.js"><img src="https://travis-ci.org/hakimel/reveal.js.png?branch=master" alt="Build Status"></a>
-</h1>
-
-<p>A framework for easily creating beautiful presentations using HTML. <a href="http://lab.hakim.se/reveal-js/">Check out the live demo</a>.</p>
-
-<p>reveal.js comes with a broad range of features including <a href="https://github.com/hakimel/reveal.js#markup">nested slides</a>, <a href="https://github.com/hakimel/reveal.js#markdown">markdown contents</a>, <a href="https://github.com/hakimel/reveal.js#pdf-export">PDF export</a>, <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker notes</a> and a <a href="https://github.com/hakimel/reveal.js#api">JavaScript API</a>. It's best viewed in a browser with support for CSS 3D transforms but <a href="https://github.com/hakimel/reveal.js/wiki/Browser-Support">fallbacks</a> are available to make sure your presentation can still be viewed elsewhere.</p>
-
-<h4>More reading in the Wiki:</h4>
-
-<ul>
-<li>
-<a href="https://github.com/hakimel/reveal.js/wiki/Changelog">Changelog</a>: Up-to-date version history.</li>
-<li>
-<a href="https://github.com/hakimel/reveal.js/wiki/Example-Presentations">Examples</a>: Presentations created with reveal.js, add your own!</li>
-<li>
-<a href="https://github.com/hakimel/reveal.js/wiki/Browser-Support">Browser Support</a>: Explanation of browser support and fallbacks.</li>
-</ul><h2>rvl.io</h2>
-
-<p>Slides are written using HTML or markdown but there's also an online editor for those of you who prefer a more traditional user interface. Give it a try at <a href="http://www.rvl.io">www.rvl.io</a>.</p>
-
-<h2>Instructions</h2>
-
-<h3>Markup</h3>
-
-<p>Markup heirarchy needs to be <code>&lt;div class="reveal"&gt; &lt;div class="slides"&gt; &lt;section&gt;</code> where the <code>&lt;section&gt;</code> represents one slide and can be repeated indefinitely. If you place multiple <code>&lt;section&gt;</code>'s inside of another <code>&lt;section&gt;</code> they will be shown as vertical slides. The first of the vertical slides is the "root" of the others (at the top), and it will be included in the horizontal sequence. For example:</p>
-
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"reveal"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"slides"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;section&gt;</span>Single Horizontal Slide<span class="nt">&lt;/section&gt;</span>
-        <span class="nt">&lt;section&gt;</span>
-            <span class="nt">&lt;section&gt;</span>Vertical Slide 1<span class="nt">&lt;/section&gt;</span>
-            <span class="nt">&lt;section&gt;</span>Vertical Slide 2<span class="nt">&lt;/section&gt;</span>
-        <span class="nt">&lt;/section&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</pre></div>
-
-<h3>Markdown</h3>
-
-<p>It's possible to write your slides using Markdown. To enable Markdown, add the <code>data-markdown</code> attribute to your <code>&lt;section&gt;</code> elements and wrap the contents in a <code>&lt;script type="text/template"&gt;</code> like the example below.</p>
-
-<p>This is based on <a href="https://gist.github.com/1343518">data-markdown</a> from <a href="https://github.com/paulirish">Paul Irish</a> which in turn uses <a href="https://github.com/coreyti/showdown/">showdown</a>. Sensitive to indentation (avoid mixing tabs and spaces) and line breaks (avoid consecutive breaks).</p>
-
-<div class="highlight"><pre><span class="nt">&lt;section</span> <span class="na">data-markdown</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/template"</span><span class="nt">&gt;</span>
-        <span class="err">##</span> <span class="nx">Page</span> <span class="nx">title</span>
-
-        <span class="nx">A</span> <span class="nx">paragraph</span> <span class="kd">with</span> <span class="nx">some</span> <span class="nx">text</span> <span class="nx">and</span> <span class="nx">a</span> <span class="p">[</span><span class="nx">link</span><span class="p">](</span><span class="nx">http</span><span class="o">:</span><span class="c1">//hakim.se).</span>
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</pre></div>
-
-<h4>External Markdown</h4>
-
-<p>You can write your content as a separate file and have reveal.js load it at runtime. Note the separator arguments which determine how slides are delimited in the external file.</p>
-
-<div class="highlight"><pre><span class="nt">&lt;section</span> <span class="na">data-markdown=</span><span class="s">"example.md"</span> <span class="na">data-separator=</span><span class="s">"^\n\n\n"</span> <span class="na">data-vertical=</span><span class="s">"^\n\n"</span><span class="nt">&gt;&lt;/section&gt;</span>
-</pre></div>
-
-<h3>Configuration</h3>
-
-<p>At the end of your page you need to initialize reveal by running the following code. Note that all config values are optional and will default as specified below.</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
-
-    <span class="c1">// Display controls in the bottom right corner</span>
-    <span class="nx">controls</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-
-    <span class="c1">// Display a presentation progress bar</span>
-    <span class="nx">progress</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-
-    <span class="c1">// Push each slide change to the browser history</span>
-    <span class="nx">history</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-
-    <span class="c1">// Enable keyboard shortcuts for navigation</span>
-    <span class="nx">keyboard</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-
-    <span class="c1">// Enable the slide overview mode</span>
-    <span class="nx">overview</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-
-    <span class="c1">// Vertical centering of slides</span>
-    <span class="nx">center</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-
-    <span class="c1">// Loop the presentation</span>
-    <span class="nx">loop</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-
-    <span class="c1">// Change the presentation direction to be RTL</span>
-    <span class="nx">rtl</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-
-    <span class="c1">// Number of milliseconds between automatically proceeding to the </span>
-    <span class="c1">// next slide, disabled when set to 0, this value can be overwritten</span>
-    <span class="c1">// by using a data-autoslide attribute on your slides</span>
-    <span class="nx">autoSlide</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-
-    <span class="c1">// Enable slide navigation via mouse wheel</span>
-    <span class="nx">mouseWheel</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-
-    <span class="c1">// Apply a 3D roll to links on hover</span>
-    <span class="nx">rollingLinks</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-
-    <span class="c1">// Transition style</span>
-    <span class="nx">transition</span><span class="o">:</span> <span class="s1">'default'</span> <span class="c1">// default/cube/page/concave/zoom/linear/fade/none</span>
-
-<span class="p">});</span>
-</pre></div>
-
-<p>Note that the new default vertical centering option will break compatibility with slides that were using transitions with backgrounds (<code>cube</code> and <code>page</code>). To restore the previous behavior, set <code>center</code> to <code>false</code>.</p>
-
-<p>The configuration can be updated after initialization using the <code>configure</code> method:</p>
-
-<div class="highlight"><pre><span class="c1">// Turn autoSlide off</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">configure</span><span class="p">({</span> <span class="nx">autoSlide</span><span class="o">:</span> <span class="mi">0</span> <span class="p">});</span>
-
-<span class="c1">// Start auto-sliding every 5s</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">configure</span><span class="p">({</span> <span class="nx">autoSlide</span><span class="o">:</span> <span class="mi">5000</span> <span class="p">});</span>
-</pre></div>
-
-<h3>Presentation Size</h3>
-
-<p>All presentations have a normal size, that is the resolution at which they are authored. The framework will automatically scale presentations uniformly based on this size to ensure that everything fits on any given display or viewport. </p>
-
-<p>See below for a list of configuration options related to sizing, including default values:</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
-
-    <span class="p">...</span>
-
-    <span class="c1">// The "normal" size of the presentation, aspect ratio will be preserved</span>
-    <span class="c1">// when the presentation is scaled to fit different resolutions. Can be</span>
-    <span class="c1">// specified using percentage units.</span>
-    <span class="nx">width</span><span class="o">:</span> <span class="mi">960</span><span class="p">,</span>
-    <span class="nx">height</span><span class="o">:</span> <span class="mi">700</span><span class="p">,</span>
-
-    <span class="c1">// Factor of the display size that should remain empty around the content</span>
-    <span class="nx">margin</span><span class="o">:</span> <span class="mf">0.1</span><span class="p">,</span>
-
-    <span class="c1">// Bounds for smallest/largest possible scale to apply to content</span>
-    <span class="nx">minScale</span><span class="o">:</span> <span class="mf">0.2</span><span class="p">,</span>
-    <span class="nx">maxScale</span><span class="o">:</span> <span class="mf">1.0</span>
-
-<span class="p">});</span>
-</pre></div>
-
-<h3>Dependencies</h3>
-
-<p>Reveal.js doesn't <em>rely</em> on any third party scripts to work but a few optional libraries are included by default. These libraries are loaded as dependencies in the order they appear, for example:</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
-    <span class="nx">dependencies</span><span class="o">:</span> <span class="p">[</span>
-        <span class="c1">// Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'lib/js/classList.js'</span><span class="p">,</span> <span class="nx">condition</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">;</span> <span class="p">}</span> <span class="p">},</span>
-
-        <span class="c1">// Interpret Markdown in &lt;section&gt; elements</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/markdown/showdown.js'</span><span class="p">,</span> <span class="nx">condition</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span> <span class="s1">'[data-markdown]'</span> <span class="p">);</span> <span class="p">}</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/markdown/markdown.js'</span><span class="p">,</span> <span class="nx">condition</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span> <span class="s1">'[data-markdown]'</span> <span class="p">);</span> <span class="p">}</span> <span class="p">},</span>
-
-        <span class="c1">// Syntax highlight for &lt;code&gt; elements</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/highlight/highlight.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">hljs</span><span class="p">.</span><span class="nx">initHighlightingOnLoad</span><span class="p">();</span> <span class="p">}</span> <span class="p">},</span>
-
-        <span class="c1">// Zoom in and out with Alt+click</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/zoom-js/zoom.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">condition</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">;</span> <span class="p">}</span> <span class="p">},</span>
-
-        <span class="c1">// Speaker notes</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/notes/notes.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">condition</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">;</span> <span class="p">}</span> <span class="p">},</span>
-
-        <span class="c1">// Remote control your reveal.js presentation using a touch device</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/remotes/remotes.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">condition</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">});</span>
-</pre></div>
-
-<p>You can add your own extensions using the same syntax. The following properties are available for each dependency object:</p>
-
-<ul>
-<li>
-<strong>src</strong>: Path to the script to load</li>
-<li>
-<strong>async</strong>: [optional] Flags if the script should load after reveal.js has started, defaults to false</li>
-<li>
-<strong>callback</strong>: [optional] Function to execute when the script has loaded</li>
-<li>
-<strong>condition</strong>: [optional] Function which must return true for the script to be loaded</li>
-</ul><h3>API</h3>
-
-<p>The <code>Reveal</code> class provides a minimal JavaScript API for controlling navigation and reading state:</p>
-
-<div class="highlight"><pre><span class="c1">// Navigation</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">slide</span><span class="p">(</span> <span class="nx">indexh</span><span class="p">,</span> <span class="nx">indexv</span><span class="p">,</span> <span class="nx">indexf</span> <span class="p">);</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">left</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">right</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">up</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">down</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">prev</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">prevFragment</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">nextFragment</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">toggleOverview</span><span class="p">();</span>
-
-<span class="c1">// Retrieves the previous and current slide elements</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">getPreviousSlide</span><span class="p">();</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">getCurrentSlide</span><span class="p">();</span>
-
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">getIndices</span><span class="p">();</span> <span class="c1">// { h: 0, v: 0 } }</span>
-</pre></div>
-
-<h3>States</h3>
-
-<p>If you set <code>data-state="somestate"</code> on a slide <code>&lt;section&gt;</code>, "somestate" will be applied as a class on the document element when that slide is opened. This allows you to apply broad style changes to the page based on the active slide.</p>
-
-<p>Furthermore you can also listen to these changes in state via JavaScript:</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">'somestate'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// TODO: Sprinkle magic</span>
-<span class="p">},</span> <span class="kc">false</span> <span class="p">);</span>
-</pre></div>
-
-<h3>Ready event</h3>
-
-<p>The 'ready' event is fired when reveal.js has loaded all (synchronous) dependencies and is ready to start navigating.</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">'ready'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// event.currentSlide, event.indexh, event.indexv</span>
-<span class="p">}</span> <span class="p">);</span>
-</pre></div>
-
-<h3>Slide change event</h3>
-
-<p>An 'slidechanged' event is fired each time the slide is changed (regardless of state). The event object holds the index values of the current slide as well as a reference to the previous and current slide HTML nodes.</p>
-
-<p>Some libraries, like MathJax (see <a href="https://github.com/hakimel/reveal.js/issues/226#issuecomment-10261609">#226</a>), get confused by the transforms and display states of slides. Often times, this can be fixed by calling their update or render function from this callback.</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">'slidechanged'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// event.previousSlide, event.currentSlide, event.indexh, event.indexv</span>
-<span class="p">}</span> <span class="p">);</span>
-</pre></div>
-
-<h3>Internal links</h3>
-
-<p>It's easy to link between slides. The first example below targets the index of another slide whereas the second targets a slide with an ID attribute (<code>&lt;section id="some-slide"&gt;</code>):</p>
-
-<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#/2/2"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#/some-slide"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
-</pre></div>
-
-<p>You can also add relative navigation links, similar to the built in reveal.js controls, by appending one of the following classes on any element. Note that each element is automatically given an <code>enabled</code> class when it's a valid navigation route based on the current slide.</p>
-
-<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navigate-left"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navigate-right"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navigate-up"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navigate-down"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navigate-prev"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Previous vertical or horizontal slide --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navigate-next"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Next vertical or horizontal slide --&gt;</span>
-</pre></div>
-
-<h3>Fragments</h3>
-
-<p>Fragments are used to highlight individual elements on a slide. Every elmement with the class <code>fragment</code> will be stepped through before moving on to the next slide. Here's an example: <a href="http://lab.hakim.se/reveal-js/#/16">http://lab.hakim.se/reveal-js/#/16</a></p>
-
-<p>The default fragment style is to start out invisible and fade in. This style can be changed by appending a different class to the fragment:</p>
-
-<div class="highlight"><pre><span class="nt">&lt;section&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment grow"</span><span class="nt">&gt;</span>grow<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment shrink"</span><span class="nt">&gt;</span>shrink<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment roll-in"</span><span class="nt">&gt;</span>roll-in<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment fade-out"</span><span class="nt">&gt;</span>fade-out<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment highlight-red"</span><span class="nt">&gt;</span>highlight-red<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment highlight-green"</span><span class="nt">&gt;</span>highlight-green<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment highlight-blue"</span><span class="nt">&gt;</span>highlight-blue<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</pre></div>
-
-<p>Multiple fragments can be applied to the same element sequentially by wrapping it, this will fade in the text on the first step and fade it back out on the second.</p>
-
-<div class="highlight"><pre><span class="nt">&lt;section&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fragment fade-in"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fragment fade-out"</span><span class="nt">&gt;</span>I'll fade in, then out<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</pre></div>
-
-<p>The display order of fragments can be controlled using the <code>data-fragment-index</code> attribute.</p>
-
-<div class="highlight"><pre><span class="nt">&lt;section&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment"</span> <span class="na">data-fragment-index=</span><span class="s">"3"</span><span class="nt">&gt;</span>Appears last<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment"</span> <span class="na">data-fragment-index=</span><span class="s">"1"</span><span class="nt">&gt;</span>Appears first<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment"</span> <span class="na">data-fragment-index=</span><span class="s">"2"</span><span class="nt">&gt;</span>Appears second<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</pre></div>
-
-<h3>Fragment events</h3>
-
-<p>When a slide fragment is either shown or hidden reveal.js will dispatch an event.</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">'fragmentshown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// event.fragment = the fragment DOM element</span>
-<span class="p">}</span> <span class="p">);</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">'fragmenthidden'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// event.fragment = the fragment DOM element</span>
-<span class="p">}</span> <span class="p">);</span>
-</pre></div>
-
-<h3>Code syntax highlighting</h3>
-
-<p>By default, Reveal is configured with <a href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> for code syntax highlighting. Below is an example with clojure code that will be syntax highlighted:</p>
-
-<div class="highlight"><pre><span class="nt">&lt;section&gt;</span>
-    <span class="nt">&lt;pre&gt;&lt;code&gt;</span>
-(def lazy-fib
-  (concat
-   [0 1]
-   ((fn rfib [a b]
-        (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
-    <span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</pre></div>
-
-<h3>Overview mode</h3>
-
-<p>Press "Esc" key to toggle the overview mode on and off. While you're in this mode, you can still navigate between slides,
-as if you were at 1,000 feet above your presentation. The overview mode comes with a few API hooks:</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">'overviewshown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span> <span class="p">);</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">'overviewhidden'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span> <span class="p">);</span>
-
-<span class="c1">// Toggle the overview mode programmatically</span>
-<span class="nx">Reveal</span><span class="p">.</span><span class="nx">toggleOverview</span><span class="p">();</span>
-</pre></div>
-
-<h3>Fullscreen mode</h3>
-
-<p>Just press »F« on your keyboard to show your presentation in fullscreen mode. Press the »ESC« key to exit fullscreen mode.</p>
-
-<h2>PDF Export</h2>
-
-<p>Presentations can be exported to PDF via a special print stylesheet. This feature requires that you use <a href="http://google.com/chrome">Google Chrome</a>.
-Here's an example of an exported presentation that's been uploaded to SlideShare: <a href="http://www.slideshare.net/hakimel/revealjs-13872948">http://www.slideshare.net/hakimel/revealjs-13872948</a>.</p>
-
-<ol>
-<li>Open your presentation with <a href="https://github.com/hakimel/reveal.js/blob/master/css/print/pdf.css">css/print/pdf.css</a> included on the page. The default index HTML lets you add <em>print-pdf</em> anywhere in the query to include the stylesheet, for example: <a href="http://lab.hakim.se/reveal-js?print-pdf">lab.hakim.se/reveal-js?print-pdf</a>.</li>
-<li>Open the in-browser print dialog (CMD+P).</li>
-<li>Change the <strong>Destination</strong> setting to <strong>Save as PDF</strong>.</li>
-<li>Change the <strong>Layout</strong> to <strong>Landscape</strong>.</li>
-<li>Change the <strong>Margins</strong> to <strong>None</strong>.</li>
-<li>Click <strong>Save</strong>.</li>
-</ol><p><img src="https://s3.amazonaws.com/hakim-static/reveal-js/pdf-print-settings.png" alt="Chrome Print Settings"></p>
-
-<h2>Speaker Notes</h2>
-
-<p>reveal.js comes with a speaker notes plugin which can be used to present per-slide notes in a separate browser window. The notes window also gives you a preview of the next upcoming slide so it may be helpful even if you haven't written any notes. Append <code>?notes</code> to the presentation URL or press the 's' key on your keyboard to open the notes window.</p>
-
-<p>By default notes are written using standard HTML, see below, but you can add a <code>data-markdown</code> attribute to the <code>&lt;aside&gt;</code> to write them using Markdown.</p>
-
-<div class="highlight"><pre><span class="nt">&lt;section&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Some Slide<span class="nt">&lt;/h2&gt;</span>
-
-    <span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">"notes"</span><span class="nt">&gt;</span>
-        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-    <span class="nt">&lt;/aside&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</pre></div>
-
-<h2>Server Side Speaker Notes</h2>
-
-<p>In some cases it can be desirable to run notes on a separate device from the one you're presenting on. The Node.js-based notes plugin lets you do this using the same note definitions as its client side counterpart. Include the required scripts by adding the following dependencies:</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
-    <span class="p">...</span>
-
-    <span class="nx">dependencies</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'socket.io/socket.io.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/notes-server/client.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">});</span>
-</pre></div>
-
-<p>Then:</p>
-
-<ol>
-<li>Install <a href="http://nodejs.org/">Node.js</a>
-</li>
-<li>Run <code>npm install</code>
-</li>
-<li>Run <code>node plugin/notes-server</code>
-</li>
-</ol><h2>Multiplexing</h2>
-
-<p>The multiplex plugin allows your audience to view the slides on their own phone, tablet or laptop. As the master navigates the slides, all clients will update in real time. See a demo at <a href="http://revealjs.jit.su">http://revealjs.jit.su/</a>.</p>
-
-<p>Configuration is via the multiplex object in <code>Reveal.initialize</code>. To generate unique secret and token values, visit <a href="revealjs.jit.su/token">revealjs.jit.su/token</a>. Below is an example configuration with the multiplex plugin enabled:</p>
-
-<div class="highlight"><pre><span class="nx">Reveal</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
-    <span class="p">...</span>
-
-    <span class="c1">// Generate a unique id and secret at revealjs.jit.su/token</span>
-    <span class="nx">multiplex</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">id</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
-        <span class="nx">secret</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
-        <span class="nx">url</span><span class="o">:</span> <span class="s1">'revealjs.jit.su:80'</span>
-    <span class="p">},</span>
-
-    <span class="nx">dependencies</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'socket.io/socket.io.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/multiplex/client.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">src</span><span class="o">:</span> <span class="s1">'plugin/multiplex/master.js'</span><span class="p">,</span> <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
-    <span class="p">]</span>
-<span class="p">});</span>
-</pre></div>
-
-<p><code>multiplex.secret</code> should only be configured on those pages you wish to be able to control slide navigation for all clients. Multi-master configurations work, but if you don't want your audience to be able to control your slides, set the secret to <code>null</code>. In this master/slave setup, you should create a publicly accessible page with secret set to <code>null</code>, and a protected page containing your secret.</p>
-
-<p>You are very welcome to use the server running at reveal.jit.su, however availability and stability are not guaranteed. For anything mission critical I recommend you run your own server. It is simple to deploy to nodejitsu or run on your own environment.</p>
-
-<h2>Theming</h2>
-
-<p>The framework comes with a few different themes included:</p>
-
-<ul>
-<li>default: Gray background, white text, blue links</li>
-<li>beige: Beige background, dark text, brown links</li>
-<li>sky: Blue background, thin white text, blue links</li>
-<li>night: Black background, thick white text, orange links</li>
-<li>serif: Cappuccino background, gray text, brown links</li>
-<li>simple: White background, black text, blue links</li>
-</ul><p>Each theme is available as a separate stylesheet. To change theme you will need to replace <strong>default</strong> below with your desired theme name in index.html:</p>
-
-<div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/theme/default.css"</span> <span class="na">id=</span><span class="s">"theme"</span><span class="nt">&gt;</span>
-</pre></div>
-
-<p>If you want to add a theme of your own see the instructions here: <a href="https://github.com/hakimel/reveal.js/blob/master/css/theme/README.md">/css/theme/README.md</a>.</p>
-
-<h2>Development Environment</h2>
-
-<p>reveal.js is built using the task-based command line build tool <a href="http://gruntjs.com">grunt.js</a> (<a href="https://github.com/gruntjs/grunt#installing-grunt">installation instructions</a>). With Node.js and grunt.js installed, you need to start by running <code>npm install</code> in the reveal.js root. When the dependencies have been installed you should run <code>grunt watch</code> to start monitoring files for changes.</p>
-
-<p>If you want to customise reveal.js without running grunt.js you can alter the HTML to point to the uncompressed source files (css/reveal.css &amp; js/reveal.js).</p>
-
-<h3>Folder Structure</h3>
-
-<ul>
-<li>
-<strong>css/</strong> Core styles without which the project does not function</li>
-<li>
-<strong>js/</strong> Like above but for JavaScript</li>
-<li>
-<strong>plugin/</strong> Components that have been developed as extensions to reveal.js</li>
-<li>
-<strong>lib/</strong> All other third party assets (JavaScript, CSS, fonts)</li>
-</ul><h2>License</h2>
-
-<p>MIT licensed</p>
-
-<p>Copyright (C) 2013 Hakim El Hattab, <a href="http://hakim.se">http://hakim.se</a></p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/hakimel">hakimel</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-
-  </body>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>BohConf 2013 - Clojure Workshop</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/xcode.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+         document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+	     <script src="lib/js/html5shiv.js"></script>
+	     <![endif]-->
+
+        <link rel="stylesheet" href="lib/css/bohconf.css">
+    </head>
+
+    <body>
+
+        <div class="reveal" ng-app="slideshow">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>'Getting' Clojure</h1>
+                    <h3>'(Parentheses are just hugs for your code)</h3>
+                    <small>Created by
+                        <a href="http://twitter.com/canweriotnow">Jason Lewis</a>
+                        / <a href="http://twitter.com/gtrakgt">Gary Trakhman</a>
+                    </small>
+
+                </section>
+
+                <section>
+                    <h2>Functions</h2>
+                    Javascript
+                    <auto>
+                        function(){
+                        return 5;
+                        }
+                    </auto>
+                </section>
+                <section>
+                    Put some parens around it, kill the braces
+                    <auto>
+                        (function()
+                        return 5;
+                        )
+                    </auto>
+                </section>
+                <section>
+                    Change 'function' to 'fn', makes args into a vector
+                    <auto>
+                        (fn []
+                        return 5;
+                        )
+                    </auto>
+                </section>
+                <section>
+                    Kill the 'return', last thing's always returned.
+                    <auto>
+                        (fn [] 5)
+                    </auto>
+                    Welcome to Clojure.
+                </section>
+                <section>
+                    <h3>Calling Stuff</h3>
+                    <auto>
+                        someFunction(arg1, arg2, arg3);
+                    </auto>
+                    Move the left parenthesis over a bit more...
+                    <clojure>
+                        (someFunction arg1 arg2 arg3)
+                    </clojure>
+                    Done.
+                </section>
+
+                <section>
+                    <h2>This isn't an accident</h2>
+                    <ul>
+                        <li>Javascript is 'Lisp in C's Clothing'</li>
+                        <li>Says Crockford: <a href="http://www.crockford.com/javascript/javascript.html">http://www.crockford.com/javascript/javascript.html</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Put another way...</h2>
+                    <ul>
+                        <li>Q: Why do you think we've gotten so much mileage out of javascript?</li>
+                        <li>A: Lisp is very powerful, and it will never die</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Data</h2>
+                    Should look familiar
+                    <auto>
+                        {:key1 5,
+                        :key2 nil}
+
+                        [1 2 3 4 "five"]
+                    </auto>
+                    Don't freak out
+                    <clojure>
+                        [1 [2] #{3} {4 4} (constantly 5)]
+                    </clojure>
+                    DON'T FREAK OUT
+                    <clojure>
+                        => (range 10)
+                        (0 1 2 3 4 5 6 7 8 9)
+
+                        => (take 11 (range))
+                        (0 1 2 3 4 5 6 7 8 9 10)
+
+                        => (last (range)) ;;Hope you don't mind waiting a long time.
+                    </clojure>
+
+                </section>
+                <section>
+                    <h2>Everything is Data</h2>
+                    <auto>
+                        ;; semicolons are comments, commas are ignored,
+                        ;; check out this weird hash-map
+                        {:a-keyword 5,
+
+                        "a string key" "a string value",
+
+                        ["a" :vector "acting" :as [:a :compound] "key"]
+
+                        (fn [] "a no-arg function
+                        that returns this multi-line string,
+                        the function itself is the value"),
+
+                        + '(functions can be keys too, and when
+                        you quote symbols, you just
+                        have symbols, not what they represent)}
+                    </auto>
+                    Evals to...
+                    <auto>
+                        {:a-keyword 5, "a string key" "a string value",
+                        ["a" :vector "acting" :as [:a :compound] "key"]
+                        #&ltuser$eval331$fn__332 user$eval331$fn__332@a585ef>,
+                        #&ltcore$_PLUS_ clojure.core$_PLUS_@20a12d8f>
+                        (functions can be keys too and when you quote symbols
+                        you just have symbols not what they represent)}
+                    </auto>
+                </section>
+                <section>
+                    <h3>Anything can be a key, because</h3>
+                    <ol>
+                        <li>Every object is also a 'value'</li>
+                        <li>Values have true equality</li>
+                        <li>Values Never Change (Immutability)</li>
+                        <li>Without immutability, objects are just buckets in memory</li>
+                    </ol>
+                    <small class="pad80">...have you ever trusted a bucket with no values?</small>
+                </section>
+                <section>
+                    <ul>
+                        <li>Q: Why is this big news?</li>
+                        <li class="pad20">A: I can write code and rest assured that other parts of
+                            my program can't change the data that I'm working on.</li>
+
+                        <li class="pad80">Q: But I thought every program is simply a short-lived
+                            http request handler that talks to a database? We just
+                            throw the program state out after every request!</li>
+                        <li class="pad20">A: Well, that's one way to do it.</li>
+                    </ul>
+
+                </section>
+                <section>
+                    <a href="http://www.ibm.com/developerworks/library/wa-aj-multitier2/">http://www.ibm.com/developerworks/library/wa-aj-multitier2/</a>
+                    <img src="lib/img/fig17.gif">
+                </section>
+
+                <section>
+                    <h3>Node.js...</h3>
+                    <a href="http://www.andrerodrigues.me/isel-workshop/intro.html#/24">http://www.andrerodrigues.me/isel-workshop/intro.html#/24</a>
+                    <img src="lib/img/eventloop.png">
+                </section>
+                <section>
+                    <h3>Node.js... is nothing new</h3>
+                    <ul>
+                        <li>We can write our own loops</li>
+                        <li>Node.js assumes threaded programming is hard, and
+                            throws out the baby with the bath-water</li>
+                        <li>Threaded programming is hard without real 'Data' or
+                            'Values'</li>
+                        <li>Composition of any sort is simpler with data</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Approximating Node.js</h3>
+                    <ul>
+                        <li>'Agents' are asynchronous queues, sharing threadpools
+                            to do work, storing the last value returned.</li>
+                        <clojure>
+                            (defn inc-last [val]
+                            (conj val (inc (last val))))
+
+                            ;; We make a sequence of 10 inc-last tasks,
+                            ;; then follow-up with a 'println' task
+                            (def tasks
+                            (concat (repeat 10 inc-last)
+                            [(fn [val]
+                            (println val)
+                            val)]))
+                        </clojure>
+                    </ul>
+                </section>
+                <section>
+                    <clojure>
+                        ;; starts off with a value of [0]
+                        (let [a (agent [0])]
+                        (doseq [t tasks]
+                        (send a t)))
+
+                        ;; prints: [0 1 2 3 4 5 6 7 8 9 10]
+                    </clojure>
+
+                    <ul>
+                        <li>Agents are not values, they are mutable references with
+                            asynchronous semantics</li>
+                        <li>Clojure has other mutable references types, acting as
+                            'containers' for values, for various use cases.</li>
+                        <li>Nothing prevents you from making your own.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>MORE!</h2>
+                    <clojure>
+                        (let [f (future (do-a-bunch-of-stuff))] ;; in another thread
+                        (do-stuff-in-this-thread)
+                        ;; return the value in f, blocking if it's not finished
+                        (deref f))
+                    </clojure>
+
+                    <ul>Basically,
+                        <li>Clojure promotes your ability to do whatever you want,
+                            by simplifying things to their bare essence.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>What We Really Want</h2>
+                    <ol>Tools that let us
+                        <li>Compose Systems</li>
+                        <li>Change our minds</li>
+                        <li>Re-use components in different contexts, processes,
+                            servers, etc..</li>
+                    </ol>
+                    <small class="pad80">Data/Values give us the ability to
+                        decouple things easily</small>
+                </section>
+                <section>
+                    <h1>Brainsplode</h1>
+                    '(code is data)
+                </section>
+                <section>
+                    <h1>R-E-P-L</h1>
+                    Read-Eval-Print-Loop
+                    <ol>
+                        <li>Read: (read-string "(+ 1 2)") => '(+ 1 2)</li>
+                        <li>Eval: (eval '(+ 1 2)) => 3</li>
+                        <li>What if there's something in the middle?</li>
+                    </ol>
+                    <clojure>
+                        (class (read-string "(+ 1 2)"))
+                        ;; clojure.lang.PersistentList
+
+                        (map class (read-string "(+ 1 2)"))
+                        ;; (clojure.lang.Symbol java.lang.Long java.lang.Long)
+                    </clojure>
+
+                </section>
+                <section>
+                    <clojure>
+                        (defn only-even!
+                        [val]
+                        (if (and (integer? val) (odd? val))
+                        (inc val)
+                        val))
+
+                        (map only-even! (read-string "(+ 1 2)"))
+                        ;; '(+ 2 2)
+
+                        (eval (map only-even! (read-string "(+ 1 2)")))
+                        ;; 4
+                    </clojure>
+
+                    This is only the beginning
+                </section>
+                <section>
+                    Everybody likes chaining, right?
+                    <auto>
+                        $("#p1").css("color","red").slideUp(2000).slideDown(2000);
+                    </auto>
+                    How is this implemented? Is this reusable?
+                </section>
+                <section>
+                    What if, as a library author, you could just not write that
+                    fluent interface code at all?
+                    <clojure>
+                        (use 'clojure.string)
+
+                        ;; These are equivalent
+
+                        (map trim (split (upper-case "hola, world") #","))
+                        ;; ("HOLA" "WORLD")
+
+                        (-> "hola, world"
+                        upper-case
+                        (split #",")
+                        (->> (map trim)))
+                        ;; ("HOLA" "WORLD")
+                    </clojure>
+                </section>
+                <section>
+                    Really useful when you're doing a lot of collection operations,
+                    filtering, etc.
+                    <clojure>
+                        (->> (range)
+                        (filter even?)
+                        (map (partial * 2))
+                        (take 10)
+                        (into []))
+                        ;; [0 4 8 12 16 20 24 28 32 36]
+
+                        ;; versus
+                        (into []
+                        (take 10 (map (partial * 2)
+                        (filter even? (range)))))
+                    </clojure>
+                    <ol>
+                        <li>I find the flat one easier to think about.</li>
+                        <li>Semantically equivalent.</li>
+                        <li>No burden on implementing code. Functions don't care
+                            about how they're used.</li>
+                    </ol>
+                    <p class="pad80">
+                        Giving the user choices is more effective with more powerful languages. Leads to simple, composable libraries.</p>
+                </section>
+                <section>
+                    <h3>Macros</h3>
+                    Let's look at a real one.
+                    <clojure>
+                        (defmacro lazy-seq
+                        "Takes a body of expressions that returns an ISeq or nil, and yields
+                        a Seqable object that will invoke the body only the first time seq
+                        is called, and will cache the result and return it on all subsequent
+                        seq calls. See also - realized?"
+                        {:added "1.0"}
+                        [& body]
+                        (list 'new 'clojure.lang.LazySeq (list* '^{:once true} fn* [] body)))
+
+                        ;; simply returns a list, allocates a Java object (LazySeq) and wraps
+                        ;; your expressions in a function
+
+                        (macroexpand-1 '(lazy-seq ANYTHING1 ANYTHING2))
+                        ;; '(new clojure.lang.LazySeq (fn* [] ANYTHING1 ANYTHING2))
+
+                    </clojure>
+                </section>
+                <section>
+                    Let's create an infinite sequence representing a square-wave
+                    <br />
+                    --__--__--__--__
+
+                    <clojure>
+                        (defn square-wave
+                        "t is the period for a half-cycle"
+                        [t]
+                        (letfn
+                        [(osc [cur-value so-far]
+                        (let [so-far (mod so-far t)
+                        next-val (if (zero? so-far)
+                        (- cur-value)
+                        cur-value)]
+                        (cons next-val
+                        (lazy-seq (osc next-val
+                        (inc so-far))))))]
+                        (osc 1 0)))
+                    </clojure>
+                    <clojure>
+                        (take 10 (square-wave 3))
+                        ;; (-1 -1 -1 1 1 1 -1 -1 -1 1)
+                    </clojure>
+                    No mutable variables
+                </section>
+                <section>
+                    <h3>Call to Action</h3>
+                    <ol>
+                        <li>Learn Clojure</li>
+                        <li>Build cool things</li>
+                        <li>Screencasts!</li>
+                    </ol>
+                    <div class="pad80">
+                        <small>(You ruby guys really know how to make good
+                            screencasts)</small>
+                    </div>
+                </section>
+                <section>
+                    <h3>Demo Time</h3>
+                    <h5>Clojure on the Web</h5>
+                    <div class="pad80">
+                        Now clone this:
+                        <br />
+                        <a href="https://github.com/canweriotnow/bohjure">
+                            https://github.com/canweriotnow/bohjure
+                        </a>
+                    </div>
+                </section>
+                <section>
+                    <h3>Resources</h3>
+                    <div>Clojure: <a href="http://clojure.org">http://clojure.org</a></div>
+                    <div>Fun Exercises: <a href="http://www.4clojure.com">http://www.4clojure.com</a></div>
+                    <div>Cheatsheets: <a href="http://clojure.org/cheatsheet">http://clojure.org/cheatsheet</a></div>
+                    <div>Building: <a href="https://github.com/technomancy/leiningen">https://github.com/technomancy/leiningen</a></div>
+                    <div>Insight: <a href="http://www.youtube.com/user/ClojureTV">http://www.youtube.com/user/ClojureTV</a></div>
+                    <div>Community docs: <a href="http://clojuredocs.org">http://clojuredocs.org</a></div>
+                    <div>Blogs: <a href="http://planet.clojure.in">http://planet.clojure.in</a></div>
+                    <div>Light Table: <a href="http://www.lighttable.com">http://www.lighttable.com</a></div>
+
+                    <div>this doc: <a href="http://gtrak.github.io/bohconf.clojure">http://gtrak.github.io/bohconf.clojure</a></div>
+                </section>
+
+                <section>
+                    <h3>MORE Demo Time</h3>
+
+                </section>
+                <section>
+                    <h3>Thanks for coming!</h3>
+                    <h5>We are:</h5>
+                    <hr/>
+                    <div>
+                        <p>Gary Trakhman</p>
+                        <p>
+                            <a href="https://twitter.com/gtrakGT">@gtrakGT</a>
+                        </p>
+                        <p>
+                            Software Engineer at <a href="http://www.revelytix.com/">Revelytix, Inc.</a>
+                        </p>
+                    </div>
+                    <hr/>
+                    <div>
+                        <p>Jason Lewis</p>
+                        <p>
+                            <a href="https://twitter.com/canweriotnow">@canweriotnow</a>
+                        </p>
+                        <p>
+                            CTO at <a href="http://anestuary.com">An Estuary, LLC</a>
+                        </p>
+                    </div>
+                    <hr/>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+        <script src="js/angular.min.js"></script>
+
+
+        <script src="js/slideshow.js"></script>
+
+        <script>
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+             controls: true,
+             progress: true,
+             history: true,
+             center: true,
+
+             theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+             transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+             // Optional libraries used to extend on reveal.js
+             dependencies: [
+                 { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                 { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                 { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                 { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                 { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                 // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                 // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+             ]
+         });
+
+        </script>
+
+    </body>
 </html>
